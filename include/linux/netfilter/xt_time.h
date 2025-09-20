@@ -25,4 +25,6 @@ enum {
 	XT_TIME_MAX_DAYTIME   = 24 * 60 * 60 - 1,
 };
 
+#define XT_TIME_ALL_FLAGS (XT_TIME_LOCAL_TZ|XT_TIME_CONTIGUOUS)
+
 #endif /* _XT_TIME_H */
