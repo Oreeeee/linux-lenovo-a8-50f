@@ -48,6 +48,7 @@ usb_f_obex-y			:= f_obex.o
 obj-$(CONFIG_USB_F_OBEX)	+= usb_f_obex.o
 usb_f_loopback-y		:= f_loopback.o
 obj-$(CONFIG_USB_F_LOOPBACK)	+= usb_f_loopback.o
+obj-$(CONFIG_USB_G_SERIAL)		+= f_adb.o
 
 #
 # USB gadget drivers
