@@ -31,6 +31,9 @@
 #include <linux/device.h>
 #include <linux/miscdevice.h>
 #include <linux/ratelimit.h>
+#include <linux/usb/composite.h>
+#include <linux/usb/ch9.h>
+#include <linux/usb/gadget.h>
 
 #define ADB_BULK_BUFFER_SIZE           4096
 
