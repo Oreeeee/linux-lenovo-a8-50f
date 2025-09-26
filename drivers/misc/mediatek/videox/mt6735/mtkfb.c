@@ -2346,7 +2346,7 @@ int _parse_tag_videolfb(void)
 
 	DISPCHECK("[DT][videolfb]isvideofb_parse_done = %d\n",is_videofb_parse_done);
 
-	if(is_videofb_parse_done) return;
+	if(is_videofb_parse_done) return 0;
 #ifdef MTK_NO_DISP_IN_LK
 	DISPCHECK("[DT][videolfb] zaikuo, workaround for LK not ready\n");//after LK ready, remove this code	
 	return 1;
