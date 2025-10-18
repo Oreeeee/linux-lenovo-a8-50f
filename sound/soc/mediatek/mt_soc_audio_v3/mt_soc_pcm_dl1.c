@@ -145,10 +145,7 @@ static bool mPrepareDone = false;
 
 static struct snd_pcm_hardware mtk_pcm_dl1_hardware =
 {
-    .info = (SNDRV_PCM_INFO_MMAP |
-    SNDRV_PCM_INFO_INTERLEAVED |
-    SNDRV_PCM_INFO_RESUME |
-    SNDRV_PCM_INFO_MMAP_VALID),
+    .info = (SNDRV_PCM_INFO_INTERLEAVED | SNDRV_PCM_INFO_RESUME),
     .formats =      SND_SOC_ADV_MT_FMTS,
     .rates =           SOC_HIGH_USE_RATE,
     .rate_min =     SOC_HIGH_USE_RATE_MIN,
@@ -649,15 +646,6 @@ static int mtk_pcm_silence(struct snd_pcm_substream *substream,
     return 0; /* do nothing */
 }
 
-static void *dummy_page[2];
-
-static struct page *mtk_pcm_page(struct snd_pcm_substream *substream,
-                                 unsigned long offset)
-{
-    PRINTK_AUDDRV("%s \n", __func__);
-    return virt_to_page(dummy_page[substream->stream]); /* the same page */
-}
-
 static struct snd_pcm_ops mtk_afe_ops =
 {
     .open =     mtk_pcm_dl1_open,
@@ -670,7 +658,6 @@ static struct snd_pcm_ops mtk_afe_ops =
     .pointer =  mtk_pcm_pointer,
     .copy =     mtk_pcm_copy,
     .silence =  mtk_pcm_silence,
-    .page =     mtk_pcm_page,
 };
 
 static struct snd_soc_platform_driver mtk_soc_platform =
